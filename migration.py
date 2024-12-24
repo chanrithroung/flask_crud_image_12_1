@@ -16,7 +16,6 @@ def Product():
 
     try:
         cursor.execute(query=query)
-        print("Table product created successfully!")
     except MySQLError as error:
         print(f"Fial to create table because: {error}")
 
