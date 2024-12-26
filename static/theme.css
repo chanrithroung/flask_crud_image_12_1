@@ -1,0 +1,33 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.h-100vh {
+    height: 100vh;
+}
+
+body {
+    background-color: rgb(247, 247, 247);
+}
+
+li {
+    list-style: none;
+}
+
+.hgithlight {
+    border-radius: 8px;
+    background-color: rgba(30, 143, 255, 0.172);
+    color: dodgerblue;
+    padding: 5px 8px;
+}
+
+.thumbnail {
+    width: 80px;
+    border-radius: 8px;
+}
+
+.prepare-thumbnail {
+    width: 200px;
+}

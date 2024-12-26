@@ -17,11 +17,40 @@ def createPost(form, file) -> None:
     cursor.execute(query=query)
     con.commit()
 
+def getAllProducts() -> list:
+    con = dc()
+    cursor = con.cursor()
+    cursor.execute("SELECT * FROM `products` ORDER BY `id` DESC")
+    products = cursor.fetchall()
+    return products
+
+
+def get_one_product_by_id(id):
+    con = dc()
+    cursor = con.cursor()
+    cursor.execute(f"SELECT * FROM `products` WHERE id = {id}")
+    product = cursor.fetchall()[0]
+    return product
 
     
 
 
+def update(form, file, id) -> None:
+    name = form['name']
 
+    sourcefile = file['thumbnail']
+    if sourcefile:
+        filename = upload_image(sourcefile=sourcefile)
+    else:
+        filename = form['old-thumbnail']
+        
+    des = form['description']
 
-
-
+    query = f"""
+        UPDATE `products` SET `name` = '{name}', `thumbnail` = '{filename}', `description` = '{des}') 
+        WHERE `id` = {id}
+    """
+    con = dc()
+    cursor = con.cursor()
+    cursor.execute(query=query)
+    con.commit()
