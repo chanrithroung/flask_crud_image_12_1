@@ -9,8 +9,7 @@ def Product():
             description TEXT,
             thumbnail varchar(255),
             created_at datetime default current_timestamp
-        );
-    """
+        );"""
     con = db_connect()
     cursor = con.cursor()
 
@@ -18,8 +17,6 @@ def Product():
         cursor.execute(query=query)
     except MySQLError as error:
         print(f"Fial to create table because: {error}")
-
-
 
 if __name__ == "__main__":
     Product()

@@ -1,9 +1,13 @@
 import pymysql
+from dotenv import load_dotenv
+from os import getenv
 
-DB_HOST = "127.0.0.1"
-DB_USER = "root"
-DB_NAME = "flask_crud_image"
-DB_PASSWORD = "24022004"
+load_dotenv()
+
+DB_HOST = getenv('DB_HOST')
+DB_USER = getenv('DB_USER')
+DB_NAME = getenv('DB_NAME')
+DB_PASSWORD = getenv('DB_PASSWORD') 
 
 def db_connect():
     con = pymysql.connect(
