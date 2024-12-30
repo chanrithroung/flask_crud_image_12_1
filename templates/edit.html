@@ -4,7 +4,7 @@
 {% block content %}
   <div class="container bg-white shadow mt-5 p-5 rounded-3">
     <h2 class="mb-5">Edit Product</h2>
-    <form action="{{ url_for('edit') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ url_for('edit_submit') }}" method="post" enctype="multipart/form-data">
       <input name="id" value="{{ product[0] }}" type="hidden">
         <div class="row mb-4">
             <div class="col">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <input name="old-thumbnail" value="{{ product[3] }}" type="text">
+        <input name="old-thumbnail" value="{{ product[3] }}" type="hidden">
         
         <div class="col">
           <label  for="thumbnail">Old Thumbnail </label>
@@ -26,7 +26,9 @@
 
         <div class="mb-4">
             <label for=""> Desctiption</label>
-            <textarea name="description" rows="5" class="form-control" id=""></textarea>
+            <textarea name="description" rows="5" class="form-control" id="">
+               {{ product[2] }}
+            </textarea>
         </div>
         <div class="mt-5">
             <button type="submit" class="btn btn-primary">Save Product</button>

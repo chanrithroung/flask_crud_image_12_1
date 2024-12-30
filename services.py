@@ -47,8 +47,7 @@ def update(form, file, id) -> None:
     des = form['description']
 
     query = f"""
-        UPDATE `products` SET `name` = '{name}', `thumbnail` = '{filename}', `description` = '{des}') 
-        WHERE `id` = {id}
+        UPDATE `products` SET `name` = '{name}', `thumbnail` = '{filename}', `description` = '{des}' WHERE `id` = {id}
     """
     con = dc()
     cursor = con.cursor()

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 import services
 
 app = Flask(__name__)
@@ -24,14 +24,21 @@ def list_product():
     return render_template('list_product.html', products=products)
 
 
-# -------------------------------------------------------
-@app.route("/edit/<id>", methods=["GET", "POST"])
+# ---------------------------------
+@app.route("/edit/<id>", methods=["GET"])
 def edit(id):
-    if request.method == "GET":
-        return render_template("edit.html", product=services.get_one_product_by_id(id))
-    else:
-        services.update(request.form, request.files, id)
+    # return f"{id}"
     
+    return render_template("edit.html", product=services.get_one_product_by_id(id))
+
+
+# @Edit Submit
+@app.route('/edit_submit', methods=["POST"])
+def edit_submit():
+    edit_id = request.form['id']
+    services.update(request.form, request.files, edit_id)
+    return redirect('list-product')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
